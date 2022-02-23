@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="washer-mgmt-api-interface-suite.xml" />
+	<munit:test name="get:\washer\all:washer-management-system-api-config-test" doc:id="37961846-81d7-4e5e-a8f5-e114c0a2f7dd" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock washer-mgmt-system-api:get-washer(s)" doc:id="238ca417-8a9c-4190-a788-3ab6edcd755c" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="a8ec8da9-9763-446c-b446-f1630fe32643" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://getwasherallwashermanagementsystemapiconfigtest/mock_payload.dwl')]" mediaType="application/json" encoding="UTF-8" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://getwasherallwashermanagementsystemapiconfigtest/mock_variable_.dwl')]" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="6f236ed5-e1c6-4043-a34b-c3b72205aaa9" >
+				<munit:attributes value="#[readUrl('classpath://getwasherallwashermanagementsystemapiconfigtest/set-event_attributes.dwl')]" />
+				<munit:variables >
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://getwasherallwashermanagementsystemapiconfigtest/set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to get:\washer\all:washer-management-system-api-config" doc:id="7c3567f2-b5a8-4704-8165-b3292a6b2349" name="get:\washer\all:washer-management-system-api-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="a35dabd0-7d68-4ac8-9eb2-16771741b3aa" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import getwasherallwashermanagementsystemapiconfigtest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="post:\washer:application\json:washer-management-system-api-config-test" doc:id="d67f2d6d-312e-4993-9e76-d07daabbde4a" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock washer-mgmt-system-api:post-washer" doc:id="e8d952a6-b261-48a9-8abe-2cd9243cee1d" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="2c430e37-8712-4924-a7b4-ddd91fb61243" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output text/plain --- readUrl('classpath://postwasherapplicationjsonwashermanagementsystemapiconfigtest/mock_payload.dwl')]" mediaType="text/plain" encoding="UTF-8" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://postwasherapplicationjsonwashermanagementsystemapiconfigtest/mock_variable_.dwl')]" />
+						<munit-tools:variable key="payload" value="#[output application/json --- readUrl('classpath://postwasherapplicationjsonwashermanagementsystemapiconfigtest/mock_variable_1.dwl')]" mediaType="application/json" encoding="UTF-8" />
+						<munit-tools:variable key="washerAddress" value="#[output application/json --- readUrl('classpath://postwasherapplicationjsonwashermanagementsystemapiconfigtest/mock_variable_2.dwl')]" mediaType="application/json" encoding="UTF-8" />
+						<munit-tools:variable key="washerInfo" value="#[output application/java --- readUrl('classpath://postwasherapplicationjsonwashermanagementsystemapiconfigtest/mock_variable_3.dwl')]" mediaType="application/java" encoding="UTF-8" />
+						<munit-tools:variable key="addressID" value="#[output application/java --- readUrl('classpath://postwasherapplicationjsonwashermanagementsystemapiconfigtest/mock_variable_4.dwl')]" mediaType="application/java" encoding="UTF-8" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="ad3c7868-a249-4a48-baf7-0575d779c00b" >
+				<munit:payload value="#[output application/json --- readUrl('classpath://postwasherapplicationjsonwashermanagementsystemapiconfigtest/set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://postwasherapplicationjsonwashermanagementsystemapiconfigtest/set-event_attributes.dwl')]" />
+				<munit:variables >
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://postwasherapplicationjsonwashermanagementsystemapiconfigtest/set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to post:\washer:application\json:washer-management-system-api-config" doc:id="4860c72f-ffe2-459e-a16d-916ad84c6f63" name="post:\washer:application\json:washer-management-system-api-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="fa147b5e-2760-4a37-ae92-a6e8ee27bbf2" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import postwasherapplicationjsonwashermanagementsystemapiconfigtest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="get:\washer\(washerID):washer-management-system-api-config-test" doc:id="aeab9b95-eb3f-4d4f-80e5-d32373aac23c" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock washer-mgmt-system-api:get-washer-byID" doc:id="72b8b3f2-fdf2-4e84-8891-89325b99dd48" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="f67c925b-eb96-4193-8418-3165a03ff08e" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output application/json --- readUrl('classpath://getwasherwasherIDwashermanagementsystemapiconfigtest/mock_payload.dwl')]" mediaType="application/json" encoding="UTF-8" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://getwasherwasherIDwashermanagementsystemapiconfigtest/mock_variable_.dwl')]" />
+						<munit-tools:variable key="washerId" value="#[output application/java --- readUrl('classpath://getwasherwasherIDwashermanagementsystemapiconfigtest/mock_variable_1.dwl')]" mediaType="application/java" encoding="UTF-8" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="fa8ed8a1-0dcd-4775-ae15-f6574aed2a85" >
+				<munit:payload value="#[readUrl('classpath://getwasherwasherIDwashermanagementsystemapiconfigtest/set-event_payload.dwl')]" encoding="UTF-8" />
+				<munit:attributes value="#[readUrl('classpath://getwasherwasherIDwashermanagementsystemapiconfigtest/set-event_attributes.dwl')]" />
+				<munit:variables >
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://getwasherwasherIDwashermanagementsystemapiconfigtest/set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to get:\washer\(washerID):washer-management-system-api-config" doc:id="70548ad6-71b3-4654-810f-9ca7c5918a14" name="get:\washer\(washerID):washer-management-system-api-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="4051fbb8-1608-4a07-bc87-912d9e121f1e" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import getwasherwasherIDwashermanagementsystemapiconfigtest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="put:\washer:application\json:washer-management-system-api-config-test" doc:id="f9ca0897-7fb1-4460-8daa-93f07ae74b1e" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock washer-mgmt-system-api:put-washer" doc:id="00585d8e-fa0e-4894-9f17-435c7ff5bcc1" processor="flow-ref">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="859211a9-06ec-4693-8d96-c63c62d0a496" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output text/plain --- readUrl('classpath://putwasherapplicationjsonwashermanagementsystemapiconfigtest/mock_payload.dwl')]" mediaType="text/plain" encoding="UTF-8" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://putwasherapplicationjsonwashermanagementsystemapiconfigtest/mock_variable_.dwl')]" />
+						<munit-tools:variable key="payload" value="#[output application/json --- readUrl('classpath://putwasherapplicationjsonwashermanagementsystemapiconfigtest/mock_variable_1.dwl')]" mediaType="application/json" encoding="UTF-8" />
+						<munit-tools:variable key="washerId" value="#[output application/json --- readUrl('classpath://putwasherapplicationjsonwashermanagementsystemapiconfigtest/mock_variable_2.dwl')]" mediaType="application/json" encoding="UTF-8" />
+						<munit-tools:variable key="washerAddress" value="#[output application/json --- readUrl('classpath://putwasherapplicationjsonwashermanagementsystemapiconfigtest/mock_variable_3.dwl')]" mediaType="application/json" encoding="UTF-8" />
+						<munit-tools:variable key="washerInfo" value="#[output application/json --- readUrl('classpath://putwasherapplicationjsonwashermanagementsystemapiconfigtest/mock_variable_4.dwl')]" mediaType="application/json" encoding="UTF-8" />
+						<munit-tools:variable key="addressID" value="#[output applicaipation/java --- readUrl('classpath://putwasherapplicationjsonwashermanagementsystemapiconfigtest/mock_variable_5.dwl')]" mediaType="applicaipation/java" encoding="UTF-8" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="eb69fae4-4d47-4d6d-af92-50ecc9170891" >
+				<munit:payload value="#[output application/json --- readUrl('classpath://putwasherapplicationjsonwashermanagementsystemapiconfigtest/set-event_payload.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://putwasherapplicationjsonwashermanagementsystemapiconfigtest/set-event_attributes.dwl')]" />
+				<munit:variables >
+					<munit:variable key="outboundHeaders" value="#[readUrl('classpath://putwasherapplicationjsonwashermanagementsystemapiconfigtest/set-event_variable_.dwl')]" />
+				</munit:variables>
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to put:\washer:application\json:washer-management-system-api-config" doc:id="7666519e-e058-4811-bb6c-666e13654687" name="put:\washer:application\json:washer-management-system-api-config"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="d67ca063-80b0-4815-a3a9-294ff0221bd8" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import putwasherapplicationjsonwashermanagementsystemapiconfigtest::assert_expression_payload
+---
+assert_expression_payload::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="washer-management-system-api-main-test" doc:id="9bf945ab-b986-40aa-b60a-f8cf0965afa7" >
+		<munit:behavior >
+			<munit-tools:mock-when doc:name="Mock APIkit Router" doc:id="380de83a-dd2f-47b2-8f73-70098ff067a1" processor="apikit:router">
+				<munit-tools:with-attributes >
+					<munit-tools:with-attribute whereValue="2e5e1571-aa70-4247-aad2-1368e67ad046" attributeName="doc:id" />
+				</munit-tools:with-attributes>
+				<munit-tools:then-return >
+					<munit-tools:payload value="#[output text/plain --- readUrl('classpath://washermanagementsystemapimaintest/mock_payload1.dwl')]" mediaType="text/plain" encoding="UTF-8" />
+					<munit-tools:variables >
+						<munit-tools:variable key="outboundHeaders" value="#[readUrl('classpath://washermanagementsystemapimaintest/mock_variable_7.dwl')]" />
+						<munit-tools:variable key="httpStatus" value="#[readUrl('classpath://washermanagementsystemapimaintest/mock_variable_8.dwl')]" />
+						<munit-tools:variable key="payload" value="#[output application/json --- readUrl('classpath://washermanagementsystemapimaintest/mock_variable_9.dwl')]" mediaType="application/json" encoding="UTF-8" />
+						<munit-tools:variable key="washerId" value="#[output application/json --- readUrl('classpath://washermanagementsystemapimaintest/mock_variable_10.dwl')]" mediaType="application/json" encoding="UTF-8" />
+						<munit-tools:variable key="washerAddress" value="#[output application/json --- readUrl('classpath://washermanagementsystemapimaintest/mock_variable_11.dwl')]" mediaType="application/json" encoding="UTF-8" />
+						<munit-tools:variable key="washerInfo" value="#[output application/json --- readUrl('classpath://washermanagementsystemapimaintest/mock_variable_12.dwl')]" mediaType="application/json" encoding="UTF-8" />
+						<munit-tools:variable key="addressID" value="#[output applicaipation/java --- readUrl('classpath://washermanagementsystemapimaintest/mock_variable_13.dwl')]" mediaType="applicaipation/java" encoding="UTF-8" />
+					</munit-tools:variables>
+				</munit-tools:then-return>
+			</munit-tools:mock-when>
+			<munit:set-event doc:name="Set Input" doc:id="7e43b2fa-efdd-4e18-bfbb-390381386c9a" >
+				<munit:payload value="#[output application/json --- readUrl('classpath://washermanagementsystemapimaintest/set-event_payload1.dwl')]" encoding="UTF-8" mediaType="application/json" />
+				<munit:attributes value="#[readUrl('classpath://washermanagementsystemapimaintest/set-event_attributes1.dwl')]" />
+			</munit:set-event>
+		</munit:behavior>
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to washer-management-system-api-main" doc:id="a80b7466-8b94-4d00-8ea1-920952cfd0f5" name="washer-management-system-api-main"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert doc:name="Assert payload" doc:id="02927fdb-4583-41f7-965d-40d93756c0da" message="The payload does not match">
+				<munit-tools:that ><![CDATA[#[%dw 2.0
+import washermanagementsystemapimaintest::assert_expression_payload1
+---
+assert_expression_payload1::main({payload: payload, attributes: attributes, vars: vars})]]]></munit-tools:that>
+			</munit-tools:assert>
+		</munit:validation>
+	</munit:test>
+
+</mule>

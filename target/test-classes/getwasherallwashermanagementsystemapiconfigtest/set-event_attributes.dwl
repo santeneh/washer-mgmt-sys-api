@@ -1,0 +1,31 @@
+{
+  "headers": {
+    "client_id": "32ed6071dbd24b6eba8ea4682e2454ce",
+    "client_secret": "Bf9AeB5061Da426D9Fa90AfB758503e1",
+    "content-type": "application/json",
+    "user-agent": "PostmanRuntime/7.29.0",
+    "accept": "*/*",
+    "cache-control": "no-cache",
+    "postman-token": "b92f6257-a0f5-4731-9e3e-95581e8a9614",
+    "host": "localhost:8081",
+    "accept-encoding": "gzip, deflate, br",
+    "connection": "keep-alive",
+    "content-length": "285"
+  },
+  "clientCertificate": null,
+  "method": "GET",
+  "scheme": "http",
+  "queryParams": {},
+  "requestUri": "/api/washer/all",
+  "queryString": "",
+  "version": "HTTP/1.1",
+  "maskedRequestPath": "/washer/all",
+  "listenerPath": "/api/*",
+  "relativePath": "/api/washer/all",
+  "localAddress": "/127.0.0.1:8081",
+  "uriParams": {},
+  "rawRequestUri": "/api/washer/all",
+  "rawRequestPath": "/api/washer/all",
+  "remoteAddress": "/127.0.0.1:60221",
+  "requestPath": "/api/washer/all"
+}
